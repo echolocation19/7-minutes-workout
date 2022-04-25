@@ -1,4 +1,4 @@
-package com.example.sevenminutesworkout.data.viewmodels
+package com.example.sevenminutesworkout.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -38,12 +38,13 @@ class BmiViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun setBmiResult() {
-        when {
-            bmi < 18.5 -> _bmiDescription.value = resources.getString(R.string.bmi_underweight)
-            bmi in 18.5..24.9 -> _bmiDescription.value = resources.getString(R.string.bmi_normal)
-            bmi in 25.0..29.9 -> _bmiDescription.value =
+        _bmiDescription.value = when {
+            bmi < 18.5 -> resources.getString(R.string.bmi_underweight)
+            bmi in 18.5..24.9 -> resources.getString(R.string.bmi_normal)
+            bmi in 25.0..29.9 ->
                 resources.getString(R.string.bmi_overweight)
-            bmi > 30.0 -> _bmiDescription.value = resources.getString(R.string.bmi_obese)
+            bmi > 30.0 -> resources.getString(R.string.bmi_obese)
+            else -> ""
         }
     }
 

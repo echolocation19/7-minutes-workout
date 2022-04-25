@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bmiFragment"
-        android:name="com.example.sevenminutesworkout.ui.BmiFragment"
+        android:name="com.example.sevenminutesworkout.presentation.fragments.BmiFragment"
         android:label="@string/fragment_bmi_title"
         tools:layout="@layout/fragment_bmi">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.sevenminutesworkout.ui.HistoryFragment"
+        android:name="com.example.sevenminutesworkout.presentation.fragments.HistoryFragment"
         android:label="@string/fragment_history_title"
         tools:layout="@layout/fragment_history">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.example.sevenminutesworkout.ui.ExerciseFragment"
+        android:name="com.example.sevenminutesworkout.presentation.fragments.ExerciseFragment"
         android:label="@string/fragment_exercise_title"
         tools:layout="@layout/fragment_exercise">
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/finishFragment"
-        android:name="com.example.sevenminutesworkout.ui.FinishFragment"
+        android:name="com.example.sevenminutesworkout.presentation.fragments.FinishFragment"
         android:label="@string/fragment_finish_title"
         tools:layout="@layout/fragment_finish">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.sevenminutesworkout.ui.HomeFragment"
+        android:name="com.example.sevenminutesworkout.presentation.fragments.HomeFragment"
         android:label="@string/fragment_home_title"
         tools:layout="@layout/fragment_home">
         <action

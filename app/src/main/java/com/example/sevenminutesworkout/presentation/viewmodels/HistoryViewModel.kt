@@ -1,4 +1,4 @@
-package com.example.sevenminutesworkout.data.viewmodels
+package com.example.sevenminutesworkout.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -13,7 +13,7 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     private val db: HistoryDatabase = HistoryDatabase.getInstance(application)
     private val historyDao = db.historyDao()
 
-    internal var allHistories: LiveData<List<History>> = db.historyDao().fetchAllDates()
+    var allHistories: LiveData<List<History>> = db.historyDao().fetchAllDates()
 
     fun addDateToDatabase() {
         val c = Calendar.getInstance()

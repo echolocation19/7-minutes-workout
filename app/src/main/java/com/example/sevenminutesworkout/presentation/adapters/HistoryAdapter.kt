@@ -1,4 +1,4 @@
-package com.example.sevenminutesworkout.adapters
+package com.example.sevenminutesworkout.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.example.sevenminutesworkout.R
 import com.example.sevenminutesworkout.data.models.History
 import com.example.sevenminutesworkout.databinding.ItemHistoryRowBinding
 
-class HistoryAdapter(val histories: List<History>) :
+class HistoryAdapter(private val histories: List<History>) :
     RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     inner class ViewHolder(binding: ItemHistoryRowBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.HistoryFragment">
+    tools:context=".presentation.fragments.HistoryFragment">
 
     <TextView
         android:id="@+id/tvText"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvText" />
