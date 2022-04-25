@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/main_screen_main_layout_padding"
-    tools:context=".ui.MainActivity">
+    tools:context=".presentation.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMain"
@@ -16,7 +16,7 @@
         android:theme="@style/ToolbarTheme"
         app:titleTextColor="@color/colorPrimary" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

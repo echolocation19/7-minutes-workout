@@ -1,58 +1,72 @@
-package com.example.sevenminutesworkout.ui
+package com.example.sevenminutesworkout.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.sevenminutesworkout.R
-import com.example.sevenminutesworkout.data.viewmodels.BmiViewModel
 import com.example.sevenminutesworkout.databinding.FragmentBmiBinding
-import com.example.sevenminutesworkout.utils.UNITS.*
+import com.example.sevenminutesworkout.presentation.viewmodels.BmiViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class BmiFragment : Fragment() {
 
+    enum class UNITS {
+        METRIC_UNITS_VIEW,
+        US_UNITS_VIEW
+    }
+
     private var _binding: FragmentBmiBinding? = null
     private val binding
-        get() = _binding!!
-    private var currentVisibleView = METRIC_UNITS_VIEW
+        get() = _binding ?: throw RuntimeException("FragmentBmiBinding == null")
+
+    private var currentVisibleView = UNITS.METRIC_UNITS_VIEW
 
     private val bmiViewModel: BmiViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBmiBinding.inflate(inflater)
 
-        binding.btnCalculate.setOnClickListener {
-            calculateUnits()
-        }
-
+        setOnClickListener()
         setMetricUnitsView()
+        setOnRadioChangeListener()
+        setObservers()
 
+        return binding.root
+    }
+
+    private fun setOnRadioChangeListener() {
         binding.rgUnits.setOnCheckedChangeListener { _, id ->
             when (id) {
                 R.id.rbMetricUnits -> setMetricUnitsView()
                 R.id.rbUsUnits -> setUsUnitsView()
             }
         }
+    }
 
-        bmiViewModel.bmiDescription.observe(viewLifecycleOwner, {
+    private fun setOnClickListener() {
+        binding.btnCalculate.setOnClickListener {
+            calculateUnits()
+        }
+    }
+
+    private fun setObservers() {
+        bmiViewModel.bmiDescription.observe(viewLifecycleOwner) {
             binding.tvBMIInfo.text = it
-        })
+        }
 
-        bmiViewModel.bmiValue.observe(viewLifecycleOwner, {
+        bmiViewModel.bmiValue.observe(viewLifecycleOwner) {
             binding.tvYourBMI.text = it
-        })
-
-        return binding.root
+        }
     }
 
     private fun setMetricUnitsView() {
-        currentVisibleView = METRIC_UNITS_VIEW
+        currentVisibleView = UNITS.METRIC_UNITS_VIEW
         binding.tilMetricUnitHeight.visibility = View.VISIBLE
         binding.tilMetricUnitWeight.visibility = View.VISIBLE
         binding.tilUsUnitWeight.visibility = View.INVISIBLE
@@ -66,11 +80,10 @@ class BmiFragment : Fragment() {
 
         binding.tvYourBMI.text = ""
         binding.tvBMIInfo.text = ""
-
     }
 
     private fun setUsUnitsView() {
-        currentVisibleView = US_UNITS_VIEW
+        currentVisibleView = UNITS.US_UNITS_VIEW
         binding.tilMetricUnitHeight.visibility = View.INVISIBLE
         binding.tilMetricUnitWeight.visibility = View.INVISIBLE
         binding.tilUsUnitWeight.visibility = View.VISIBLE
@@ -89,12 +102,12 @@ class BmiFragment : Fragment() {
     private fun calculateUnits() {
         if (isValid()) {
             when (currentVisibleView) {
-                METRIC_UNITS_VIEW -> {
+                UNITS.METRIC_UNITS_VIEW -> {
                     val height: String = binding.etHeight.text.toString()
                     val weight: String = binding.etWeight.text.toString()
                     bmiViewModel.calculateMetricBmi(height.toDouble(), weight.toDouble())
                 }
-                US_UNITS_VIEW -> {
+                UNITS.US_UNITS_VIEW -> {
                     val weight: String = binding.etUsWeight.text.toString()
                     val feet: String = binding.etFeet.text.toString()
                     val inch: String = binding.etInch.text.toString()
@@ -105,17 +118,16 @@ class BmiFragment : Fragment() {
             Snackbar.make(
                 requireView(),
                 getString(R.string.fields_should_not_be_empty), Snackbar.LENGTH_SHORT
-            )
-                .show()
+            ).show()
         }
     }
 
     private fun isValid(): Boolean {
         return when (currentVisibleView) {
-            METRIC_UNITS_VIEW -> {
+            UNITS.METRIC_UNITS_VIEW -> {
                 binding.etHeight.text!!.isNotBlank() && binding.etWeight.text!!.isNotBlank()
             }
-            US_UNITS_VIEW -> {
+            UNITS.US_UNITS_VIEW -> {
                 binding.etFeet.text!!.isNotBlank() && binding.etInch.text!!.isNotBlank() &&
                         binding.etUsWeight.text!!.isNotBlank()
             }
@@ -126,4 +138,5 @@ class BmiFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }

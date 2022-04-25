@@ -29,6 +29,13 @@
         <entry key="..\:/AndroidApps/SevenMinutesWorkout/app/src/main/res/layout/item_history_row.xml" value="0.1" />
         <entry key="..\:/AndroidApps/SevenMinutesWorkout/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/AndroidApps/SevenMinutesWorkout/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/fragment_bmi.xml" value="0.13269927536231885" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/fragment_exercise.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/fragment_finish.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/fragment_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sakur/AndroidStudioProjects/7-minutes-workout/app/src/main/res/layout/item_exercise_status.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

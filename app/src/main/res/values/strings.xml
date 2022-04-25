@@ -35,4 +35,5 @@
     <string name="fragment_home_title">7 minutes workout</string>
     <string name="congratulations">Congratulations!</string>
     <string name="you_have_done_the_workout">You have done the workout!</string>
+    <string name="selected_language_not_supported">Selected language not supported!</string>
 </resources>

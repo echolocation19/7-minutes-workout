@@ -1,4 +1,4 @@
-package com.example.sevenminutesworkout.adapters
+package com.example.sevenminutesworkout.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.example.sevenminutesworkout.R
 import com.example.sevenminutesworkout.databinding.ItemExerciseStatusBinding
 import com.example.sevenminutesworkout.data.models.Exercise
 
-class ExerciseStatusAdapter(val items: ArrayList<Exercise>) :
+class ExerciseStatusAdapter(private val items: ArrayList<Exercise>) :
     RecyclerView.Adapter<ExerciseStatusAdapter.ViewHolder>() {
 
     inner class ViewHolder(binding: ItemExerciseStatusBinding) :
@@ -24,8 +24,6 @@ class ExerciseStatusAdapter(val items: ArrayList<Exercise>) :
         )
     }
 
-    /** will be created 12 items, cause we have 12 elements
-     * it also triggers on notifyDataSetChanged */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model: Exercise = items[position]
         holder.tvItem.text = model.id.toString()

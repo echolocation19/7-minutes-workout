@@ -3,7 +3,7 @@ package com.example.sevenminutesworkout.data.db
 import com.example.sevenminutesworkout.R
 import com.example.sevenminutesworkout.data.models.Exercise
 
-object DefaultExercisesList {
+object ExercisesList {
 
     fun defaultExerciseList(): ArrayList<Exercise> {
         val exerciseList = ArrayList<Exercise>()

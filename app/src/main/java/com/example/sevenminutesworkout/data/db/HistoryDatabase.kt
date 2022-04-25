@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.sevenminutesworkout.data.models.History
-import com.example.sevenminutesworkout.utils.Constants
 
 @Database(entities = [History::class], version = 1)
 abstract class HistoryDatabase : RoomDatabase() {
@@ -13,17 +12,21 @@ abstract class HistoryDatabase : RoomDatabase() {
     abstract fun historyDao(): HistoryDao
 
     companion object {
+
+        private const val DB_NAME = "history_db"
+
         @Volatile
         private var INSTANCE: HistoryDatabase? = null
+        private val LOCK = Any()
 
         fun getInstance(ctx: Context): HistoryDatabase {
-            synchronized(this) {
+            synchronized(LOCK) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         ctx,
                         HistoryDatabase::class.java,
-                        Constants.DB_NAME
+                        DB_NAME
                     ).fallbackToDestructiveMigration()
                         .build()
                 }
