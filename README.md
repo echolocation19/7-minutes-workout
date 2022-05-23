@@ -12,7 +12,7 @@
  <img src="https://img.shields.io/github/last-commit/echolocation19/7-minutes-workout?color=blue&label=Last%20commit">
 </p>
 
-## 🛠 Features
+## Features
 * 12 different exercises.
 * 30 seconds per each exercise with 10 seconds rest between each other.
 * The name of upcoming and current exercise is spoken aloud using TextToSpeech.
